@@ -1,19 +1,45 @@
-.main {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 6rem;
-  min-height: 100vh;
+.app {
+  @apply relative flex flex-row items-center justify-center min-h-screen;
+
+  &:before,
+  &:after {
+    content: '';
+    position: fixed;
+    filter: blur(45px);
+  }
+
+  &:before {
+    top: 25%;
+    left: 50%;
+    background: var(--secondary-glow);
+    border-radius: 50%;
+    width: 880px;
+    height: 660px;
+    margin-left: -400px;
+    z-index: -1;
+  }
+
+  &:after {
+    top: 15%;
+    left: 20%;
+    background: var(--primary-glow);
+    width: 340px;
+    height: 300px;
+    z-index: -1;
+  }
+
+  & h1 {
+    @apply text-center mb-12;
+  }
 }
 
-.description {
-  display: inherit;
-  justify-content: inherit;
-  align-items: inherit;
-  font-size: 0.85rem;
-  max-width: var(--max-width);
-  width: 100%;
-  z-index: 2;
-  font-family: var(--font-mono);
+.wrapper {
+  @apply relative h-full w-full max-w-3xl py-20;
+}
+
+.card {
+  @apply flex flex-row flex-wrap justify-center w-full p-6 border rounded-md;
+  background-color: rgba(100, 100, 100, 0.1);
+  border-color: rgba(200, 200, 200, 0.15);
+  backdrop-filter: blur(16px);
 }
