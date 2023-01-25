@@ -36,7 +36,7 @@ const RepoLists: React.FC<{ username: string }> = ({ username }) => {
                 {isLoadingMore ? 'loading...' : 'Load more'}
               </Button>
             )}
-            {isReachingEnd && <p>No more data</p>}
+            {isReachingEnd && !isEmpty && <p>No more data</p>}
           </div>
         </>
       )}
