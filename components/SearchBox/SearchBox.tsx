@@ -46,7 +46,7 @@ const SearchBox: React.FC = () => {
         <div className='relative mr-2 mb-2 md:mb-0 w-full md:w-2/3'>
           <Input
             ref={ref}
-            placeholder='Search...'
+            placeholder='Search github users...'
             className='w-full'
             value={value}
             name={'s'}
