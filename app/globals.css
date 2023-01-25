@@ -10,6 +10,15 @@
       rgba(255, 64, 0, 0.25)
     );
   }
+  ::-webkit-scrollbar {
+    @apply w-1;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-white bg-opacity-30 rounded-full;
+  }
   body {
     font-family: var(--font-poppins);
     background: linear-gradient(to bottom, transparent, rgb(0, 0, 0))

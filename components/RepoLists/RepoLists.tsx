@@ -17,7 +17,7 @@ const RepoLists: React.FC<{ username: string }> = ({ username }) => {
     isEmpty || (data && data[data.length - 1]?.length < pageSize)
 
   return (
-    <div className='relative max-h-80 overflow-auto pr-4 py-4'>
+    <div className='relative max-h-80 overflow-auto pr-3 py-4'>
       {error ? (
         <p>Error: Failed to fetch data. Please try again later!</p>
       ) : (
