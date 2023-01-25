@@ -4,4 +4,5 @@
 
 .primary {
   @apply bg-primary text-white hover:bg-[#007acc];
+  @apply disabled:bg-gray-500 disabled:text-white;
 }
