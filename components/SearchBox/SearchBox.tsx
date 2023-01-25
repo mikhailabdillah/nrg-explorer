@@ -1,11 +1,16 @@
 'use client'
 
 import React, { useEffect, useState, useRef } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { Button, Input } from '@/components/Core'
+import { useStore } from '@/store'
 
 const SearchBox: React.FC = () => {
   const ref = useRef<HTMLInputElement>(null)
-  const [value, setValue] = useState<string>('')
+  const searchParams = useSearchParams()
+  const search = searchParams.get('s')
+  const [value, setValue] = useState<string>(search || '')
+  const setSearching = useStore((state) => state.setSearching)
 
   // Auto focus to the search box input
   useEffect(() => {
@@ -20,6 +25,11 @@ const SearchBox: React.FC = () => {
     }
   }, [])
 
+  useEffect(() => {
+    search && setSearching(search)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [search])
+
   return (
     <div className='flex flex-row w-full mb-8'>
       <form
@@ -27,6 +37,11 @@ const SearchBox: React.FC = () => {
         aria-label='Search github user'
         className='flex flex-col md:flex-row w-full'
         action={'/'}
+        onSubmit={() => {
+          if (value) {
+            setSearching(value)
+          }
+        }}
       >
         <div className='relative mr-2 mb-2 md:mb-0 w-full md:w-2/3'>
           <Input
@@ -41,7 +56,12 @@ const SearchBox: React.FC = () => {
             {'Ctrl+/'}
           </span>
         </div>
-        <Button variant='primary' className='w-full md:w-2/6' type='submit'>
+        <Button
+          variant='primary'
+          className='w-full md:w-2/6'
+          type='submit'
+          disabled={!value}
+        >
           Search
         </Button>
       </form>

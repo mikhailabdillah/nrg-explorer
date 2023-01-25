@@ -1,34 +1,40 @@
 'use client'
 
-// import { GithubUser } from '@/types/api'
 import { useSearchParams } from 'next/navigation'
-// import { Button, Collapse } from '@/components/Core'
-// import dummy from '@/dummy.json'
-// import RepoLists from '../RepoLists'
+import { useGetUsers } from '@/services/useGetUsers'
+import { Collapse } from '@/components/Core'
+import RepoLists from '@/components/RepoLists'
 
 const UserLists: React.FC = () => {
   const searchParams = useSearchParams()
   const search = searchParams.get('s')
-  // const users = dummy.items as unknown as GithubUser[]
+  const { users, isLoading, error } = useGetUsers(search)
 
   return (
-    <>
-      {search && <p className='mb-4'>Searching for &quot;{search}&quot;</p>}
-      <div role='group' className='w-full'>
-        {/* {users.map((user) => (
-          <div key={user.id} className='mb-4'>
-            <Collapse title={user.login}>
-              <RepoLists username={user.login} />
-            </Collapse>
+    <div className='w-full text-center'>
+      {error ? (
+        <p>Error: Failed to fetch data. Please try again later!</p>
+      ) : (
+        <>
+          {search && (
+            <p className='mb-4'>
+              Searching for <b>&quot;{search}&quot;</b>
+            </p>
+          )}
+          {search && isLoading && <p className='mb-4'>Loading...</p>}
+
+          <div role='group'>
+            {users?.items?.map((user) => (
+              <div key={user.id} className='mb-4'>
+                <Collapse title={user.login}>
+                  <RepoLists username={user.login} />
+                </Collapse>
+              </div>
+            ))}
           </div>
-        ))} */}
-      </div>
-      {/* <div>
-        <Button className='border border-gray-100 border-opacity-10'>
-          Load More
-        </Button>
-      </div> */}
-    </>
+        </>
+      )}
+    </div>
   )
 }
 
