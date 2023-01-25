@@ -1,0 +1,10 @@
+.root {
+  @apply block border hover:border-gray-500 focus:border-gray-500 rounded-[4px] py-2.5 px-4 transition-colors duration-200;
+  border-color: rgba(100, 100, 100, 0.5);
+  background-color: rgba(100, 100, 100, 0.15);
+  outline: none;
+
+  &::placeholder {
+    @apply text-sm;
+  }
+}

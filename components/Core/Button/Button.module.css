@@ -1,0 +1,7 @@
+.root {
+  @apply inline-flex py-2.5 px-4 rounded-[4px] justify-center text-center transition-colors duration-200;
+}
+
+.primary {
+  @apply bg-primary text-white hover:bg-[#007acc];
+}

@@ -1,0 +1,35 @@
+.root {
+  @apply relative flex flex-col outline-none rounded-sm;
+}
+
+.header {
+  @apply flex flex-row items-center p-4 rounded-[4px];
+  background-color: rgba(100, 100, 100, 0.15);
+
+  & .label {
+    @apply text-base font-medium;
+  }
+}
+
+[aria-expanded='true'] {
+  & .header {
+    @apply bg-primary text-white;
+  }
+
+  & .icon {
+    @apply text-white;
+  }
+}
+
+.content {
+  @apply pt-3 overflow-hidden;
+}
+
+.icon {
+  @apply absolute right-2 mr-3 text-white;
+  transition: transform 0.2s ease;
+}
+
+.icon.open {
+  transform: rotate(90deg);
+}
