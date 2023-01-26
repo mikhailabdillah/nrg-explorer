@@ -1,0 +1,12 @@
+.root {
+  @apply absolute left-0 w-full;
+  bottom: -1.5rem;
+}
+
+.wrapper {
+  @apply flex flex-row justify-center;
+}
+
+.cta {
+  @apply bg-red-500 text-white rounded-full;
+}

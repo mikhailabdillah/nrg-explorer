@@ -10,6 +10,7 @@ const SearchBox: React.FC = () => {
   const searchParams = useSearchParams()
   const search = searchParams.get('s')
   const [value, setValue] = useState<string>(search || '')
+
   const setSearching = useStore((state) => state.setSearching)
 
   // Auto focus to the search box input
@@ -26,7 +27,11 @@ const SearchBox: React.FC = () => {
   }, [])
 
   useEffect(() => {
-    search && setSearching(search)
+    if (search) {
+      setSearching(search)
+    } else {
+      setValue('')
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search])
 
